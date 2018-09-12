@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package foo;
+
+import "google/protobuf/timestamp.proto";
+
+message Interval {
+  google.protobuf.Timestamp start_time = 1;
+  google.protobuf.Timestamp end_time = 2;
+}
