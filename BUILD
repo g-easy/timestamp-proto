@@ -9,16 +9,14 @@ proto_library(
 
 # Works:
 cc_proto_library(
-    name = "foo_cc",
+    name = "foo_cc_proto",
     deps = [":foo_proto"],
 )
 
-# Doesn't:
+# Works:
 cc_grpc_library(
-    name = "foo_grpc",
-    srcs = ["foo.proto"],
-    proto_only = False,
-    use_external = True,
-    well_known_protos = False,
-    deps = ["@com_google_protobuf//:timestamp_proto"],
+    name = "foo_cc_grpc",
+    srcs = [":foo_proto"],
+    deps = [":foo_cc_proto"],
+    grpc_only = True,
 )
